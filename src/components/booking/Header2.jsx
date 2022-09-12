@@ -6,6 +6,7 @@ import logoBar from "../../assert//booking/logobar.png";
 const Header2 = () => {
 
   return (
+    
     <StHeader2>
       <div>
         <a href="/">
