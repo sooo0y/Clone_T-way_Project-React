@@ -1,0 +1,91 @@
+.Stcontainer{
+    border-bottom: 1px solid #eee;
+    background-color: transparent;
+    transition: all 0.3s;
+    margin: 0 auto;
+    background-color: #fff;
+}
+
+.fixedBox1{
+    color: #000;
+    height: 85px;
+    font-size: 20px;
+    font-weight: 700;
+    text-align: center;
+    box-sizing: border-box;
+    line-height: 85px;
+    position: relative;
+}
+.fixedLogo{
+    width: 101px;
+    height: 42px;
+    background: url("//contents-image.twayair.com/homepage/images/common/top_logo.png");
+}
+.fixedMyPage{
+    text-indent: -9999px;
+    width: 30px;
+    height: 30px;
+    background:url("//contents-image.twayair.com/homepage/images/ico/ico_top_login.png") no-repeat 100% 0 ;
+}
+
+.StLogo{
+    width: 101px;
+    height: 42px;
+    background: url("//contents-image.twayair.com/homepage/images/common/top_logo.png") no-repeat 0 0;
+}
+.StNavBox{
+    width: 820px;
+    margin-left:60px;
+    box-sizing: border-box;
+}
+.StNavList{
+    height: 85px;
+    font-size: 20px;
+    font-weight: 700;
+    text-align: center;
+    box-sizing: border-box;
+    line-height: 85px;
+    color: #000;
+    position: relative;
+}
+
+.StNavList:hover.StNavList::after{
+ width: 100%;
+}
+.StNavList::after{
+    content: '';
+    display: block;
+    width: 0%;
+    height: 4px;
+    background-color: #f00;
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    transition: all 0.3s;
+   transform: translateX(-50%);
+}
+.StNavContainer{
+    display: flex;
+    list-style: none;
+    justify-content: space-between;
+    align-items: center;
+}
+.StHeaderContainer{
+    width: 1200px;
+    margin:  0 auto;
+    height: 85px;
+    justify-content: space-between;
+    display: flex;
+    align-items: center;
+}
+.StSideBox{
+    display: flex;
+    gap:10px
+}
+.StMyPage{
+    text-indent: -9999px;
+    width: 30px;
+    height: 30px;
+    background:url("//contents-image.twayair.com/homepage/images/ico/ico_top_login.png") no-repeat 100% 0 ;
+}
+
