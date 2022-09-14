@@ -20,6 +20,7 @@
     width: 101px;
     height: 42px;
     background: url("//contents-image.twayair.com/homepage/images/ico/ico_top_login.png");
+    cursor: pointer;
 }
 .fixedMyPage1{
     text-indent: -9999px;
@@ -32,6 +33,7 @@
     width: 101px;
     height: 42px;
     background: url("//contents-image.twayair.com/homepage/images/common/top_logo.png") no-repeat 0 0;
+    cursor: pointer;
 }
 .StNavBox1{
     width: 820px;
@@ -47,6 +49,7 @@
     line-height: 85px;
     color: #000;
     position: relative;
+    cursor: pointer;
 }
 
 .StNavList:hover.StNavList::after{
@@ -83,6 +86,7 @@
     gap:10px
 }
 .StMyPage1{
+    cursor: pointer;
     text-indent: -9999px;
     width: 30px;
     height: 30px;

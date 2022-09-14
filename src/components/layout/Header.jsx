@@ -1,9 +1,12 @@
 import React from 'react'
-import { useState ,useEffect} from 'react';
+import { useState, useEffect } from 'react';
 import './style.css'
 import { getCookie } from '../../shared/cookie';
-import { useNavigate} from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+import { logout } from '../../redux/config/module/users';
+import { useDispatch } from 'react-redux';
 const Header = () => {
+    const dispatch = useDispatch();
     const navigate = useNavigate();
     const token = getCookie("isLogin")
     console.log(token)
@@ -27,11 +30,11 @@ const Header = () => {
         <>
             <div className={ScrollActive ? "fixedBox Stcontainer" : "Stcontainer"}>
                 <header className='const StHeaderContainer'>
-                    <h1 className={ScrollActive ? "fixedLogo" : 'StLogo'}></h1>
+                    <h1 onClick={()=>{navigate("/")}} className={ScrollActive ? "fixedLogo" : 'StLogo'}></h1>
                     <nav className='StNavBox'>
                         <ul className='StNavContainer'>
-                            <li className={ScrollActive ? "fixedBox1" : "StNavList"}>항공권예매</li>
-                            <li className={ScrollActive ? "fixedBox1" : "StNavList"}>나의 예약</li>
+                            {token == null ? <li onClick={() => {alert("로그인 후 이용하세요");navigate("/login")}} className={ScrollActive ? "fixedBox1" : "StNavList"}>항공권예매</li> : <li  onClick={() => {navigate("/search")}} className={ScrollActive ? "fixedBox1" : "StNavList"}>항공권예매</li>}
+                            {token == null ? <li onClick={() => {alert("로그인 후 이용하세요");navigate("/login")}} className={ScrollActive ? "fixedBox1" : "StNavList"}>나의 예약</li> : <li  onClick={() => {navigate("/mypage")}} className={ScrollActive ? "fixedBox1" : "StNavList"}>나의 예약</li>}
                             <li className={ScrollActive ? "fixedBox1" : "StNavList"}>서비스안내</li>
                             <li className={ScrollActive ? "fixedBox1" : "StNavList"}>온라인면세점</li>
                             <li className={ScrollActive ? "fixedBox1" : "StNavList"}>이벤트</li>
@@ -39,7 +42,13 @@ const Header = () => {
                         </ul>
                     </nav>
                     <div className='StSideBox'>
-                       {token ==null ? <p onClick={()=>{navigate("/login")}} className={ScrollActive ? "fixedMyPage" : "StMyPage"}>나의페이지</p>: <p onClick={()=>{navigate("/login")}} className={ScrollActive ? "fixedMyPage1" : "StMyPage1"}>나의페이지</p> } 
+                        {token == null ? <p onClick={() => { navigate("/login") }} className={ScrollActive ? "fixedMyPage" : "StMyPage"}>나의페이지</p> : <p onClick={() => { navigate("/login") }} className={ScrollActive ? "fixedMyPage2" : "StMyPage2"}>나의페이지</p>}
+                        <button onClick={() => {
+                            dispatch(logout(),
+                                alert('로그아웃 성공'),
+                                navigate("/login")
+                            )
+                        }}>로그아웃</button>
                     </div>
                 </header>
             </div>
