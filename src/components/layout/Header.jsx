@@ -1,7 +1,12 @@
 import React from 'react'
 import { useState ,useEffect} from 'react';
 import './style.css'
+import { getCookie } from '../../shared/cookie';
+import { useNavigate} from 'react-router-dom';
 const Header = () => {
+    const navigate = useNavigate();
+    const token = getCookie("isLogin")
+    console.log(token)
     const [ScrollY, setScrollY] = useState(0); // window 의 pageYOffset값을 저장 
     const [ScrollActive, setScrollActive] = useState(false);
     function handleScroll() {
@@ -34,7 +39,7 @@ const Header = () => {
                         </ul>
                     </nav>
                     <div className='StSideBox'>
-                        <p className={ScrollActive ? "fixedMyPage" : "StMyPage"}>나의페이지</p>
+                       {token ==null ? <p onClick={()=>{navigate("/login")}} className={ScrollActive ? "fixedMyPage" : "StMyPage"}>나의페이지</p>: <p onClick={()=>{navigate("/login")}} className={ScrollActive ? "fixedMyPage1" : "StMyPage1"}>나의페이지</p> } 
                     </div>
                 </header>
             </div>

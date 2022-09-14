@@ -108,3 +108,10 @@
     background:url("//contents-image.twayair.com/homepage/images/main/ico_top_login.png") no-repeat 100% 0 ;
 }
 
+.StMyPage1{
+    text-indent: -9999px;
+    width: 30px;
+    height: 30px;
+    background:url("//contents-image.twayair.com/homepage/images/main/ico_top_login_on.png") no-repeat 100% 0
+}
+

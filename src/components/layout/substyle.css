@@ -1,4 +1,4 @@
-.Stcontainer{
+.Stcontainer1{
     border-bottom: 1px solid #eee;
     background-color: transparent;
     transition: all 0.3s;
@@ -16,29 +16,29 @@
     line-height: 85px;
     position: relative;
 }
-.fixedLogo{
+.fixedLogo1{
     width: 101px;
     height: 42px;
-    background: url("//contents-image.twayair.com/homepage/images/common/top_logo.png");
+    background: url("//contents-image.twayair.com/homepage/images/ico/ico_top_login.png");
 }
-.fixedMyPage{
+.fixedMyPage1{
     text-indent: -9999px;
     width: 30px;
     height: 30px;
     background:url("//contents-image.twayair.com/homepage/images/ico/ico_top_login.png") no-repeat 100% 0 ;
 }
 
-.StLogo{
+.StLogo1{
     width: 101px;
     height: 42px;
     background: url("//contents-image.twayair.com/homepage/images/common/top_logo.png") no-repeat 0 0;
 }
-.StNavBox{
+.StNavBox1{
     width: 820px;
     margin-left:60px;
     box-sizing: border-box;
 }
-.StNavList{
+.StNavList1{
     height: 85px;
     font-size: 20px;
     font-weight: 700;
@@ -64,13 +64,13 @@
     transition: all 0.3s;
    transform: translateX(-50%);
 }
-.StNavContainer{
+.StNavContainer1{
     display: flex;
     list-style: none;
     justify-content: space-between;
     align-items: center;
 }
-.StHeaderContainer{
+.StHeaderContainer1{
     width: 1200px;
     margin:  0 auto;
     height: 85px;
@@ -78,11 +78,11 @@
     display: flex;
     align-items: center;
 }
-.StSideBox{
+.StSideBox1{
     display: flex;
     gap:10px
 }
-.StMyPage{
+.StMyPage1{
     text-indent: -9999px;
     width: 30px;
     height: 30px;
