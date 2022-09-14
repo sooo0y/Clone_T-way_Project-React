@@ -1,8 +1,8 @@
 # ✈ T'way-air 클론코딩 ✈
 
-Innovation-Camp Week7 _ 7조
-Frontend GitHub : https://github.com/lee123so/Clone-T-way-Front_end
-Backend GitHub : https://github.com/sparta-team7/t-way-clone
+Innovation-Camp Week7 _ 7조  
+Frontend GitHub : https://github.com/lee123so/Clone-T-way-Front_end  
+Backend GitHub : https://github.com/sparta-team7/t-way-clone  
 
 ## ✌️ 프로젝트 소개
 
