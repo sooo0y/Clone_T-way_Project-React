@@ -1,7 +1,9 @@
 import React from 'react'
 import { useState ,useEffect} from 'react';
+import { useNavigate } from 'react-router-dom';
 import './style.css'
 const Header = () => {
+    const navigate = useNavigate();
     const [ScrollY, setScrollY] = useState(0); // window 의 pageYOffset값을 저장 
     const [ScrollActive, setScrollActive] = useState(false);
     function handleScroll() {
@@ -25,7 +27,8 @@ const Header = () => {
                     <h1 className={ScrollActive ? "fixedLogo" : 'StLogo'}></h1>
                     <nav className='StNavBox'>
                         <ul className='StNavContainer'>
-                            <li className={ScrollActive ? "fixedBox1" : "StNavList"}>항공권예매</li>
+                            <li className={ScrollActive ? "fixedBox1" : "StNavList"}
+                            onClick={() => navigate('/search')}>항공권예매</li>
                             <li className={ScrollActive ? "fixedBox1" : "StNavList"}>나의 예약</li>
                             <li className={ScrollActive ? "fixedBox1" : "StNavList"}>서비스안내</li>
                             <li className={ScrollActive ? "fixedBox1" : "StNavList"}>온라인면세점</li>
