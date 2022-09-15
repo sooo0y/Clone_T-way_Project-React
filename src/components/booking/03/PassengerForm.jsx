@@ -24,7 +24,7 @@ const PassengerForm = () => {
           <TypeFocus onClick={onModalHandler}>
             <span>
               <em>성인 1</em>
-              <em> : 김/소연</em>
+              <em> : Kim/Minsic</em>
             </span>
           </TypeFocus>
         </StPassengerForm>

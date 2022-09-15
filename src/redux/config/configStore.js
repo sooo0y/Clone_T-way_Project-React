@@ -1,8 +1,8 @@
 import { configureStore } from "@reduxjs/toolkit";
 
-import users from "../modules/users";
+import users from "./module/users";
 import ticketSlice from "../modules/ticket";
-import ReservationCheck from "../modules/mypagecheck";
+import ReservationCheck from "./module/mypagecheck";
 const store = configureStore({
   reducer: {
     users: users.reducer,

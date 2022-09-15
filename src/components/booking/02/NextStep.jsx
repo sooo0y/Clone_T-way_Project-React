@@ -5,25 +5,28 @@ import left from "../../../assert/booking/left.png";
 import right from "../../../assert/booking/right.png";
 
 const NextStep = () => {
-
   const navigate = useNavigate();
 
   return (
     <St>
       <StNextStep>
-          <Info>
-            <div>
-              <Span1>항공운임 등 총액</Span1>
+        <Info>
+          <div>
+            {/* <Span1>항공운임 등 총액</Span1>
               <Span2>KRW</Span2>
-              <Span3>0</Span3>
-            </div>
-            <Buttons>
-              <Button1 onClick={() => navigate('/search')}
-              >이전 단계</Button1>
-              <Button2
-              onClick={() => navigate('/passenger')}>다음 단계</Button2>
-            </Buttons>
-          </Info>
+              <Span3>0</Span3> */}
+          </div>
+          <Buttons>
+            <Button1 onClick={() => navigate("/search")}>이전 단계</Button1>
+            <Button2
+              onClick={() => {
+                navigate("/passenger");
+              }}
+            >
+              다음 단계
+            </Button2>
+          </Buttons>
+        </Info>
       </StNextStep>
     </St>
   );

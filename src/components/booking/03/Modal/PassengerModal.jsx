@@ -1,25 +1,40 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import img3_1 from "../../../../assert/booking/03/img3-1.png";
 import select from "../../../../assert/booking/03/select.png";
 import star from "../../../../assert/booking/star.png";
 
 const Modal = (props) => {
+
+  const initialState = {
+    passenger: [
+      {
+        gender: "",
+        country: "",
+        name: "",
+        birth: "",
+        email: "",
+        number: ""
+      }
+    ]
+  }
+
+  const [passenger, setPassenger] = useState(initialState);
   return (
     <StPassengerForm>
       <TypeFocus onClick={props.onModalHandler}>
         <span>
           <em>성인 1</em>
-          <em> : 김/소연</em>
+          <em> : Kim/Minsic</em>
         </span>
       </TypeFocus>
 
       <PassengerInfoWrap>
         <TopWrap>
           <Top>
-            <input type="checkbox" />
+            <input type="checkbox" disabled />
             {/* <label> */}
-            <Span1> 회원 본인 탑승</Span1>
+            <Span1 > 회원 본인 탑승</Span1>
             {/* </label> */}
           </Top>
           <Span2>은 필수 입력 항목입니다.</Span2>
@@ -79,19 +94,28 @@ const Modal = (props) => {
               <Td4>
                 <div>
                   <span>
-                    <Select1>
+                    <Input
+                    required
+                    placeholder="YYYY"/>
+                    {/* <Select1>
                       <option>YYYY</option>
-                    </Select1>
+                    </Select1> */}
                   </span>
                   <span>
-                    <Select2>
+                  <Input
+                    required
+                    placeholder="MM"/>
+                    {/* <Select2>
                       <option>MM</option>
-                    </Select2>
+                    </Select2> */}
                   </span>
                   <span>
-                    <Select2>
+                  <Input
+                    required
+                    placeholder="DD"/>
+                    {/* <Select2>
                       <option>DD</option>
-                    </Select2>
+                    </Select2> */}
                   </span>
                 </div>
               </Td4>
@@ -312,10 +336,12 @@ const Li1 = styled.li`
     vertical-align: middle;
     border: 1px solid rgb(204, 204, 204);
     background-color: white;
+    
 
-    & ~ checked {
+    &:active {
       border-color: rgb(125, 117, 109);
       background-color: rgb(125, 117, 109);
+      color: white;
     }
   }
 `;
@@ -358,10 +384,14 @@ const Li2 = styled.li`
     box-sizing: border-box;
     position: relative;
     vertical-align: middle;
+    border: 1px solid rgb(204, 204, 204);
+    background-color: white;
 
-    color: rgb(255, 255, 255);
-    border-color: rgb(125, 117, 109);
-    background-color: rgb(125, 117, 109);
+    &:active {
+      border-color: rgb(125, 117, 109);
+      background-color: rgb(125, 117, 109);
+      color: white;
+    }
   }
 `;
 
@@ -378,7 +408,7 @@ const Td2 = styled.td`
   text-indent: initial;
 
   & input {
-    background-color: #f5f5f5;
+    /* background-color: #f5f5f5; */
     color: #1a1a1a;
     padding: 0 20px;
     height: 46px;
@@ -581,4 +611,19 @@ const Td6 = styled.td`
     margin: 0px;
     line-height: 1.5;
   }
+`;
+
+const Input = styled.input`
+  padding: 0px 30px 0px 15px;
+  height: 46px;
+  font-size: 16px;
+  color: rgb(26, 26, 26);
+  border: 1px solid rgb(204, 204, 204);
+  background-color: rgb(255, 255, 255);
+  box-sizing: border-box;
+  appearance: none;
+  width: 156px;
+  vertical-align: middle;
+  line-height: 1.5;
+
 `;
