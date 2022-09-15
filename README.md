@@ -22,6 +22,22 @@ Backend GitHub : https://github.com/sparta-team7/t-way-clone
 
 ## 👷 사용한 기술
 
+`Back-end`
+-   Java 11
+-   Spring Boot 2.7.2
+-   H2, MySQL
+-   Spring security, JWT
+-   AWS S3, IAM, EC2
+
+`Front-end`
+
+-   JavaScript
+-   React
+-   React-Toolkit
+-   axios
+-   React-redux
+
+
 ## 😡 Trouble Shooting
 
 <!-- ### `yarn start`
