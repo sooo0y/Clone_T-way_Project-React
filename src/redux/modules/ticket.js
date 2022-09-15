@@ -1,9 +1,10 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
+import { getCookie } from "../../shared/Cookie";
 // import { instance } from "../../shared/Api";
 
 const initialState = {
-  tickets: [],
+  ticket: [],
   isLoading: false,
   error: null,
 };
@@ -11,10 +12,20 @@ const initialState = {
 export const __getTicket = createAsyncThunk(
   "ticket/getTicket",
   async (payload, thunkAPI) => {
-    // console.log(payload)
+    const startDay = getCookie("startDay");
+    const startPoint = getCookie("startPoint");
+  
+    const start = {
+       startDay:{startDay},
+       startPoint:{startPoint}
+    }
+
+    console.log(start.startPoint.startPoint)
+    console.log(start.startDay.startDay)
+
     try {
       const data = await axios.get(`
-      http://3.39.254.156/api/ticket?depAirportId=NAARKTN&depPlandTime=20220911
+      http://3.39.254.156/api/ticket?depAirportId=${start.startPoint.startPoint}&depPlandTime=${start.startDay.startDay}
       `);
       console.log(data.data.data);
       return thunkAPI.fulfillWithValue(data.data.data);
@@ -27,7 +38,14 @@ export const __getTicket = createAsyncThunk(
 export const ticketSlice = createSlice({
   name: "ticket",
   initialState,
-  reducers: {},
+  reducers: {
+    addTicket: async(state, action) => {
+      const data = await axios.get(`
+      http://3.39.254.156/api/ticket?depAirportId=${action.payload.startPoint.startPoint}&depPlandTime=${action.payload.startDay.startDay}
+      `);
+      state.ticket.push(data.data.data);
+    },
+  },
   extraReducers: (builder) => {
     // console.log(builder);
     builder
@@ -37,8 +55,8 @@ export const ticketSlice = createSlice({
       })
       .addCase(__getTicket.fulfilled, (state, action) => {
         state.isLoading = false;
-        state.tickets = action.payload;
-        // console.log(action.payload);
+        state.ticket = action.payload;
+        console.log(state.ticket)
       })
       .addCase(__getTicket.rejected, (state, action) => {
         state.isLoading = false;
@@ -48,4 +66,5 @@ export const ticketSlice = createSlice({
   },
 });
 
+export const { addTicket } = ticketSlice.actions;
 export default ticketSlice;
