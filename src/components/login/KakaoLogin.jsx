@@ -1,7 +1,7 @@
 import React from 'react'
 import { useDispatch } from "react-redux";
 import { useEffect, useState } from "react";
-import { __KakaoLogin } from '../../redux/config/module/users';
+import { __KakaoLogin } from '../../redux/modules/users';
 const KakaoLogin = () => {
     const dispatch = useDispatch();
     let params = new URL(document.URL).searchParams;

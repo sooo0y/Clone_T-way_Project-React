@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import { useEffect, useState } from "react";
 import {useSelector, useDispatch} from 'react-redux'
 import {useNavigate} from 'react-router-dom'
-import {__userLogin} from '../../redux/config/module/users'
+import {__userLogin} from '../../redux/modules/users'
 const LoginPage = () => {
     const navigate = useNavigate();
     const dispatch = useDispatch();
@@ -31,8 +31,7 @@ const LoginPage = () => {
                         <StInput maxLength={20} placeholder="아이디를 입력하세요" type="text" name='userId' value={user.userId} onChange={onChangeHandler}/>
                         <StInput placeholder='비밀번호를 입력하세요' type="password" name='password' value={user.password} onChange={onChangeHandler}/>
                         <StButton type='button' onClick={() => {
-                dispatch(__userLogin(user));
-                navigate('/')}}>로그인</StButton>
+                dispatch(__userLogin(user));}}>로그인</StButton>
                         <div>
                             <p>아직 회원이 아니신가요?</p>
                         </div>

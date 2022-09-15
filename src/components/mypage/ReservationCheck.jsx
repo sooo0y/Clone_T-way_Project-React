@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import { useState } from 'react'
 import { useDispatch,useSelector } from 'react-redux'
-import { __getReservationCheck } from '../../redux/config/module/mypagecheck'
+import { __getReservationCheck } from '../../redux/modules/mypagecheck'
 const ReservationCheck = () => {
   const data = useSelector((state)=> state.ReservationCheck.data)
 
