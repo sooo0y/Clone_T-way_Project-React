@@ -11,7 +11,7 @@ const Footer2 = () => {
       </div>
 
       <div>
-        <copyright>Copyright ⓒ 2019 t’way Air. All Rights Reserved.</copyright>
+        <p>Copyright ⓒ 2019 t’way Air. All Rights Reserved.</p>
       </div>
     </StFooter2>
   );
@@ -20,6 +20,7 @@ const Footer2 = () => {
 export default Footer2;
 
 const StFooter2 = styled.div`
+
   border-top: 0px;
   background-color: rgb(245, 245, 245);
   padding-left: 50px;
@@ -27,15 +28,12 @@ const StFooter2 = styled.div`
   display: block;
   margin: 0 auto;
   margin-top: 100px;
+  margin-bottom: 30px;
 
   & div {
     width: 1200px;
     margin: 0 auto;
     padding: 30px;
-  }
-
-  & copyright {
-    padding: 10px;
   }
 `;
 
