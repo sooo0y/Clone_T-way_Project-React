@@ -1,8 +1,8 @@
 import reactDom from "react-dom";
 
-const ModalPortal = ({ children }) => {
-  const el = document.getElementById("modal");
-  return reactDom.createPortal(children, el);
+const MPortal = ({ child }) => {
+  const bl = document.getElementById("modal2");
+  return reactDom.createPortal(child, bl);
 };
 
-export default ModalPortal;
+export default MPortal;

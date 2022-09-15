@@ -1,13 +1,19 @@
 import React from 'react'
 
 import { useState ,useEffect} from 'react';
-import { useNavigate } from 'react-router-dom';
 import './style.css'
 import { getCookie } from '../../shared/Cookie';
+import { useNavigate } from 'react-router-dom';
 import { logout } from '../../redux/config/module/users';
 import { useDispatch } from 'react-redux';
+import MypageModal from './MypageModal';
 const Header = () => {
+    const [modal, setModal] = useState(false);
 
+    const onModalHandler = () => {
+      setModal(!modal);
+    };
+  
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const token = getCookie("isLogin")
@@ -47,17 +53,15 @@ const Header = () => {
                         </ul>
                     </nav>
                     <div className='StSideBox'>
-                        {token == null ? <p onClick={() => { navigate("/login") }} className={ScrollActive ? "fixedMyPage" : "StMyPage"}>나의페이지</p> : <p onClick={() => { navigate("/login") }} className={ScrollActive ? "fixedMyPage2" : "StMyPage2"}>나의페이지</p>}
-                        <button onClick={() => {
-                            dispatch(logout(),
-                                alert('로그아웃 성공'),
-                                navigate("/login")
-                            )
-                        }}>로그아웃</button>
+                        {token == null ? <p onClick={() => {alert("로그인을 해 주세요"); navigate("/login") }} className={ScrollActive ? "fixedMyPage" : "StMyPage"}>나의페이지</p> : <p onClick={onModalHandler} className={ScrollActive ? "fixedMyPage2" : "StMyPage2"}>나의페이지</p>}
+                        
+                       
+            {modal == true ?<MypageModal onChange = {onModalHandler}/>:null}
+            
                     </div>
                 </header>
             </div>
-
+            
         </>
     )
 }

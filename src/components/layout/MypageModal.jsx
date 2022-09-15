@@ -1,32 +1,49 @@
 import React from 'react'
 import styled from 'styled-components'
-
-
-const MypageModal = () => {
-    return (
+import { useDispatch } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
+import { logout } from '../../redux/modules/users'
+const MypageModal = ({onChange}) => {
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
+       return (
         <StModal>
-
+            <StModalWrap>
             <StModalBox>
-                <StClose><StCloseButton></StCloseButton></StClose>
+                <StClose><StCloseButton onClick={onChange}></StCloseButton></StClose>
                 <Stp>이희수 고객님</Stp>
                 <Stp1>티웨이항공 홈페이지를 방문해 주셔서 대단히 감사합니다.</Stp1>
                 <div>
-                <div><StButton>나의 예약</StButton></div>
-                <div><StButton1>로그아웃하기</StButton1></div>
+                <div><StButton onClick={()=>{navigate("/mypage")}}>나의 예약</StButton></div>
+                <div><StButton1 onClick={() => {
+                            dispatch(logout(),
+                                alert('로그아웃 성공'),
+                                navigate("/login")
+                            )
+                        }}>로그아웃하기</StButton1></div>
                 </div>
             </StModalBox>
+            </StModalWrap>
         </StModal>
     )
 }
 
 export default MypageModal
-
+const StModalWrap = styled.div`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+`
 const StModal = styled.div`
 width: 100%;
 height: 100%;
+padding-top: 100px;
     position: fixed;
+    left: 0;
+    top: 0;
     z-index: 10000;
-    background-color: rgba(0,0,0,0.2);
+    
 `
 const StModalBox = styled.div`
     width: 560px;
@@ -35,7 +52,7 @@ const StModalBox = styled.div`
     justify-content:flex-start;
     align-items: center;
     flex-direction: column;
-    margin: 500px auto;
+    
     
     background-color:  #fff;
 

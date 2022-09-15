@@ -28,10 +28,13 @@ export const __userLogin = createAsyncThunk(
                     console.log(data.headers.authorization)
                  }  
                  
-                 return thunkApI.fulfillWithValue(data.data);
+                 return thunkApI.fulfillWithValue(data.data),
+                 alert('로그인 성공'),
+                    window.location.replace("/");
                         
         }catch(error){
-            return thunkApI.rejectWithValue(error.message);
+            return thunkApI.rejectWithValue(error.message),
+            alert('로그인 실패')
         }
     }
 );
