@@ -1,29 +1,30 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
-<<<<<<< HEAD:src/redux/config/module/mypagecheck.js
-import {
-  deleteCookie,
-  setCookie,
-  setKakaoCookie,
-} from "../../../shared/Cookie";
-import KakaoLogin from "../../../components/login/KakaoLogin";
-=======
-import { deleteCookie, setCookie , setKakaoCookie} from "../../shared/Cookie";
+
+import { deleteCookie, setCookie , getCookie} from "../../shared/Cookie";
 import KakaoLogin from "../../components/login/KakaoLogin";
->>>>>>> bde799844649ab38c4703cefa4d4089280898f73:src/redux/modules/mypagecheck.js
 
 export const __getReservationCheck = createAsyncThunk(
-  "ReservationCheck",
-  async (arg, thunkAPI) => {
-    try {
-      const { data } = await axios.get(
-        `http://13.209.97.75:8080/api/auth/mybooking?bookingNum=${arg}`
-        // arg 포스트 아이디
-      );
-      // console.log(data);
-      return thunkAPI.fulfillWithValue(data.data);
-    } catch (e) {
-      return thunkAPI.rejectWithValue(e.code), alert("없는 예약 번호입니다.");
+    "ReservationCheck",
+    async (arg, thunkAPI) => {
+      try {
+        const { data } = await axios.get(
+          `http://3.39.254.156/api/auth/mybooking?bookingNum=${arg}`,  
+          // arg 포스트 아이디
+          {
+            headers:{
+                "Content-Type": "multipart/form",
+                Authorization: getCookie("ACESS_TOKEN"),
+                RefreshToken: getCookie("REFRESH_TOKEN")
+            }
+            
+        });
+        // console.log(data);
+        return thunkAPI.fulfillWithValue(data.data);
+      } catch (e) {
+        return thunkAPI.rejectWithValue(e.code),
+        alert('없는 예약 번호입니다.')
+      }
     }
   }
 );
