@@ -32,7 +32,8 @@ export const __userLogin = createAsyncThunk(
                     window.location.replace("/");
                         
         }catch(error){
-            return thunkApI.rejectWithValue(error.message);
+            return thunkApI.rejectWithValue(error.message),
+            alert('로그인 실패')
         }
     }
 );
