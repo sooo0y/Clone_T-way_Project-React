@@ -10,6 +10,7 @@ const Main = () => {
     <Visual/>
     <Container/>
     <Footer/>
+   
     </>
     
   )

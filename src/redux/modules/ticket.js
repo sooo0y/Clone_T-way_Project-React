@@ -4,7 +4,7 @@ import { getCookie } from "../../shared/Cookie";
 // import { instance } from "../../shared/Api";
 
 const initialState = {
-  ticket: [],
+  tickets: [],
   isLoading: false,
   error: null,
 };
@@ -26,7 +26,14 @@ export const __getTicket = createAsyncThunk(
     try {
       const data = await axios.get(`
       http://3.39.254.156/api/ticket?depAirportId=${start.startPoint.startPoint}&depPlandTime=${start.startDay.startDay}
-      `);
+      `,{
+        headers:{
+            "Content-Type": "multipart/form",
+            Authorization: getCookie("ACESS_TOKEN"),
+            RefreshToken: getCookie("REFRESH_TOKEN")
+        }
+        
+    });
       console.log(data.data.data);
       return thunkAPI.fulfillWithValue(data.data.data);
     } catch (error) {
@@ -43,7 +50,7 @@ export const ticketSlice = createSlice({
       const data = await axios.get(`
       http://3.39.254.156/api/ticket?depAirportId=${action.payload.startPoint.startPoint}&depPlandTime=${action.payload.startDay.startDay}
       `);
-      state.ticket.push(data.data.data);
+      state.tickets.push(data.data.data);
     },
   },
   extraReducers: (builder) => {
@@ -55,7 +62,7 @@ export const ticketSlice = createSlice({
       })
       .addCase(__getTicket.fulfilled, (state, action) => {
         state.isLoading = false;
-        state.ticket = action.payload;
+        state.tickets = action.payload;
         console.log(state.ticket)
       })
       .addCase(__getTicket.rejected, (state, action) => {
