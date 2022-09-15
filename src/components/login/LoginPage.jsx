@@ -33,7 +33,7 @@ const LoginPage = () => {
                         <StButton type='button' onClick={() => {
                 dispatch(__userLogin(user));}}>로그인</StButton>
                         <div>
-                            <p>아직 회원이 아니신가요?</p>
+                            <p type="button" onClick={()=>{navigate("/signup")}}>아직 회원이 아니신가요?</p>
                         </div>
                         </form>
                     </StLoginForm>

@@ -5,7 +5,7 @@ import { useDispatch,useSelector } from 'react-redux'
 import { __getReservationCheck } from '../../redux/modules/mypagecheck'
 const ReservationCheck = () => {
   const data = useSelector((state)=> state.ReservationCheck.data)
-
+  const passengerList = useSelector((state)=> state.ReservationCheck.data.passengerList)
   console.log(data)
   const dispatch = useDispatch()
   const [number, setNumber] = useState()
@@ -59,24 +59,60 @@ const ReservationCheck = () => {
             <StCheckTr>
               <tr>
                 <StCheckTh >예약 번호</StCheckTh>
-                <StCheckTh >탑승일</StCheckTh>
+                <StCheckTh >가격</StCheckTh>
                 <StCheckTh >노선</StCheckTh>
                 <StCheckTh >출발</StCheckTh>
                 <StCheckTh >도착</StCheckTh>
-                <StCheckTh >총 탑승객</StCheckTh>
-                <StCheckTh >상태</StCheckTh>
+                <StCheckTh >출발시간</StCheckTh>
+                <StCheckTh >도착시간</StCheckTh>
               </tr>
             </StCheckTr>
             <tbody>
               <tr>
-                <StTbody colspan="1">{data.bookingNum}</StTbody>
-                <StTbody colspan="2">조회 결과가 없습니다.</StTbody>
-                <StTbody colspan="3">{data.flyNum}</StTbody>
-                <StTbody colspan="4">{data.startPoint}</StTbody>
-                <StTbody colspan="5">{data.endPoint}</StTbody>
-                <StTbody colspan="6"></StTbody>
-                <StTbody colspan="7">조회 결과가 없습니다.</StTbody>
+                <StTbody colspan="1">{data?.bookingNum}</StTbody>
+                <StTbody colspan="2">{data?.charge}</StTbody>
+                <StTbody colspan="3">{data?.flyNum}</StTbody>
+                <StTbody colspan="4">{data?.startPoint}</StTbody>
+                <StTbody colspan="5">{data?.endPoint}</StTbody>
+                <StTbody colspan="6">{data?.startTime}</StTbody>
+                <StTbody colspan="7">{data?.endTime}</StTbody>
               </tr>
+            </tbody>
+          </StTable>
+          <h2>예약자정보</h2>
+          <StTable >
+            {/* <caption>예약조회 - 예약번호, 탑승일, 노선, 출발 시간, 도착 시간, 총 탑승객,
+									상태로 구성되었습니다. 선택한 목록의 상세내역을 보실려면 스페이바를 이용해 주세요.</caption> */}
+                  
+            <colgroup>
+              <col style={{ width: "130px" }} />
+              <col style={{ width: "150px" }} />
+              <col style={{ width: "auto" }} />
+              <col style={{ width: "130px" }} />
+              <col style={{ width: "200px" }} />
+            </colgroup>
+            <StCheckTr>
+              <tr>
+                <StCheckTh >성별</StCheckTh>
+                <StCheckTh >국적</StCheckTh>
+                <StCheckTh >이름</StCheckTh>
+                <StCheckTh >생년월일</StCheckTh>
+                <StCheckTh >핸드폰번호</StCheckTh>
+              </tr>
+            </StCheckTr>
+            <tbody>
+              {passengerList?.map((pass)=>{
+                return(<tr >
+                  <StTbody colspan="1">{pass?.gender}</StTbody>
+                  <StTbody colspan="2">{pass?.country}</StTbody>
+                  <StTbody colspan="3">{pass?.name}</StTbody>
+                  <StTbody colspan="4">{pass?.birth}</StTbody>
+                  <StTbody colspan="5">{pass?.number}</StTbody>
+                </tr>)
+              }
+              )}
+              
+              
             </tbody>
           </StTable>
         </div>

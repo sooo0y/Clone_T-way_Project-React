@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
-import { deleteCookie, setCookie , setKakaoCookie} from "../../shared/Cookie";
+import { deleteCookie, setCookie , getCookie} from "../../shared/Cookie";
 import KakaoLogin from "../../components/login/KakaoLogin";
 
 export const __getReservationCheck = createAsyncThunk(
@@ -8,9 +8,16 @@ export const __getReservationCheck = createAsyncThunk(
     async (arg, thunkAPI) => {
       try {
         const { data } = await axios.get(
-          `http://13.209.97.75:8080/api/auth/mybooking?bookingNum=${arg}`  
+          `http://3.39.254.156/api/auth/mybooking?bookingNum=${arg}`,  
           // arg 포스트 아이디
-        );
+          {
+            headers:{
+                "Content-Type": "multipart/form",
+                Authorization: getCookie("ACESS_TOKEN"),
+                RefreshToken: getCookie("REFRESH_TOKEN")
+            }
+            
+        });
         // console.log(data);
         return thunkAPI.fulfillWithValue(data.data);
       } catch (e) {

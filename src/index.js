@@ -11,7 +11,7 @@ root.render(
 
   <React.StrictMode>
     <App />
-    <div id='modal2'></div>
+  
   </React.StrictMode>
 );
 
