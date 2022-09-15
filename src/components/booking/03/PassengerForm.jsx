@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import img3_1 from "../../../assert/booking/03/img3-1.png";
 import img3_2 from "../../../assert/booking/03/img3-2.png";
+import { getCookie } from "../../../shared/Cookie";
 import ModalPortal from "../Portal/Portal";
 import Modal from "./Modal/PassengerModal";
 
@@ -11,6 +12,8 @@ const PassengerForm = () => {
   const onModalHandler = () => {
     setModal(!modal);
   };
+
+  const count = getCookie("count");
 
   return (
     <>
