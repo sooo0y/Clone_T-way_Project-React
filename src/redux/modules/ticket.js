@@ -20,9 +20,6 @@ export const __getTicket = createAsyncThunk(
       startPoint: { startPoint },
     };
 
-    console.log(start.startPoint.startPoint);
-    console.log(start.startDay.startDay);
-
     try {
       const data = await axios.get(
         `

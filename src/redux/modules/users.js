@@ -1,7 +1,7 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 import { Navigate } from "react-router-dom";
-import { deleteCookie, setCookie ,  getCookie} from "../../../shared/Cookie";
+import { deleteCookie, setCookie ,  getCookie} from "../../shared/Cookie";
 import { useNavigate } from "react-router-dom";
 
 //로그인기능

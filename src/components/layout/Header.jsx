@@ -4,7 +4,6 @@ import { useState ,useEffect} from 'react';
 import './style.css'
 import { getCookie } from '../../shared/Cookie';
 import { useNavigate } from 'react-router-dom';
-import { logout } from '../../redux/config/module/users';
 import { useDispatch } from 'react-redux';
 import MypageModal from './MypageModal';
 const Header = () => {
