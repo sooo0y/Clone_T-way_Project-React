@@ -13,15 +13,17 @@ const NextStep = () => {
       <StNextStep>
           <Info>
             <div>
-              <Span1>항공운임 등 총액</Span1>
+              {/* <Span1>항공운임 등 총액</Span1>
               <Span2>KRW</Span2>
-              <Span3>0</Span3>
+              <Span3>0</Span3> */}
             </div>
             <Buttons>
               <Button1 onClick={() => navigate('/detail')}
               >이전 단계</Button1>
               <Button2
-              onClick={() => navigate('/mypage')}>완료</Button2>
+              onClick={() => {navigate('/mypage')
+              ;
+              window.alert("예약번호: 1000067853");}}>완료</Button2>
             </Buttons>
           </Info>
       </StNextStep>
