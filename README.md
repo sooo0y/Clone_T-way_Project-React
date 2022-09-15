@@ -2,9 +2,9 @@
 
 Innovation-Camp Week7 _ 7조  
 Frontend GitHub : https://github.com/lee123so/Clone-T-way-Front_end  
-Backend GitHub : https://github.com/sparta-team7/t-way-clone 
-SA : https://www.notion.so/7-Tway-7f5f845972d24632882c9e52a356fc4a
-웹 주소 : http://tway.s3-website.ap-northeast-2.amazonaws.com
+Backend GitHub : https://github.com/sparta-team7/t-way-clone <br/>
+SA : https://www.notion.so/7-Tway-7f5f845972d24632882c9e52a356fc4a<br/>
+웹 주소 : http://tway.s3-website.ap-northeast-2.amazonaws.com<br/>
 
 ## 📅 제작 기간
 2022.09.09 ~ 2022.09.15 (7일)
