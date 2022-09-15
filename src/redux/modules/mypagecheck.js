@@ -26,7 +26,7 @@ export const __getReservationCheck = createAsyncThunk(
         alert('없는 예약 번호입니다.')
       }
     }
-  }
+  
 );
 
 export const ReservationCheck = createSlice({

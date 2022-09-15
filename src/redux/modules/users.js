@@ -1,7 +1,7 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 import { Navigate } from "react-router-dom";
-import { deleteCookie, setCookie ,  getCookie} from "../../../shared/Cookie";
+import { deleteCookie, setCookie ,  getCookie} from "../../shared/Cookie";
 import { useNavigate } from "react-router-dom";
 
 //로그인기능
@@ -23,14 +23,12 @@ export const __userLogin = createAsyncThunk(
                     setCookie("ACESS_TOKEN",data.headers.authorization,1)
                     setCookie("REFRESH_TOKEN",data.headers.refreshtoken)
                     // localStorage.setItem("nickname",data.data.data.nickname);
-                    alert('로그인 성공')
-                    window.location.replace("/");
                     console.log(data.headers.authorization)
                  }  
-                 
-                 return thunkApI.fulfillWithValue(data.data),
-                 alert('로그인 성공'),
-                    window.location.replace("/");
+                 console.log(data)
+                 return thunkApI.fulfillWithValue(data.data)
+                //  alert('로그인 성공'),
+                    // window.location.replace("/");
                         
         }catch(error){
             return thunkApI.rejectWithValue(error.message),
