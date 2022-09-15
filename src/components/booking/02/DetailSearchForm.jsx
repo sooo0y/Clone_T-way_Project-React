@@ -3,22 +3,32 @@ import styled from "styled-components";
 import check from "../../../assert/booking/02/check_.png";
 import fly from "../../../assert/booking/02/fly.png";
 import { useSelector, useDispatch } from "react-redux";
-import { __getTicket } from "../../../redux/modules/ticket";
+import { addTicket, __getTicket } from "../../../redux/modules/ticket";
 import DetailSearchList from "./DetailSearchList";
+import { getCookie } from "../../../shared/Cookie";
 
 const DetailSearchForm = () => {
-  const { isLoading, error, tickets } = useSelector((state) => state.ticket);
-
-  console.log(tickets);
   const dispatch = useDispatch();
 
+  const startDay = getCookie("startDay");
+  const startPoint = getCookie("startPoint");
+
+  const data = {
+     startDay:{startDay},
+     startPoint:{startPoint}
+  }
+
+  const { isLoading, error, tickets } = useSelector((state) => state.ticket);
+  console.log(tickets)
+
   useEffect(() => {
-    dispatch(__getTicket());
+    dispatch(__getTicket(data));
   }, []);
 
   if (isLoading) {
     return <div>로딩 중...</div>;
   }
+  
   if (error) {
     return <div>{error.message}</div>;
   }
@@ -54,7 +64,7 @@ const DetailSearchForm = () => {
           </span>
         </div>
         <List>
-          {tickets.map((ticket) => {
+          {tickets?.map((ticket) => {
             return (
               <DetailSearchList
                 key={ticket.flyNum}

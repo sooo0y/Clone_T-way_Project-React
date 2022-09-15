@@ -3,7 +3,6 @@ import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import img from "../../../assert/booking/02/img.png";
 import fly from "../../../assert/booking/02/fly.png";
-import ticketSlice from "../../../redux/modules/ticket";
 
 const DetailSearchList = ({ ticket }) => {
   const navigate = useNavigate();
