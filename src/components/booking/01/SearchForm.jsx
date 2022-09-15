@@ -1,6 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
-import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
 import location from "../../../assert/booking/01/location.png";
 import img1 from "../../../assert/booking/01/img1.png";
 import img2 from "../../../assert/booking/01/img2.png";
@@ -9,19 +9,166 @@ import img4 from "../../../assert/booking/01/img4.png";
 import img5 from "../../../assert/booking/01/img5.png";
 import plus from "../../../assert/booking/01/-.png";
 import minus from "../../../assert/booking/01/+.png";
+// import StartPoint from "./modal/StartPoint";
+// import EndPoint from "./modal/EndPoint";
+// import BoardingDate from "./modal/BoardingDate";
+import select from "../../../assert/booking/03/select.png";
+import { setCookie } from "../../../shared/Cookie";
 
 const SearchForm = () => {
-  const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  // Counter
+  const [adult, setAdult] = useState(0);
+  // const [infant, setInfant] = useState(0);
+  // const [child, setChild] = useState(0);
+
+  const AdultPlusHandler = () => {
+    setAdult(adult + 1);
+  };
+  const AdultMinusHandler = () => {
+    setAdult(adult - 1);
+  };
+
+  // const infantPlusHandler = () => {
+  //   setInfant(infant +1);
+  // }
+  // const infantMinusHandler = () => {
+  //   setInfant(infant - 1)
+  // }
+  // const childPlusHandler = () => {
+  //   setChild(child +1);
+  // }
+  // const childMinusHandler = () => {
+  //   setChild(child - 1)
+  // }
+
+  // 출발지, 도착지, 날짜 각각 모달
+
+  // const [startModal, setStartModal] = useState(false);
+  // const [endModal, setEndModal] = useState(false);
+  // const [dateModal, setDateModal] = useState(false);
+
+  // const onStartModalHandler = () => {
+  //   setStartModal(!startModal);
+  // };
+
+  // const onEndModalHandler = () => {
+  //   setEndModal(!endModal);
+  // };
+
+  // const onDateModalHandler = () => {
+  //   setDateModal(!dateModal);
+  // };
+
+  // 출발지, 도착지 모달 열어서 선택했을 때 값 띄우기
+  // const startOptions = [
+  //   { value: 0, name: "도시/공항" },
+  //   { value: 1, name: "여수 PSU" },
+  //   { value: 2, name: "김포 GMP" },
+  //   { value: 3, name: "대구 TAE" },
+  //   { value: 4, name: "청주 CJJ" },
+  // ];
+
+  // const endOptions = [
+  //   { value: 0, name: "도시/공항" },
+  //   { value: 1, name: "제주 CJU" },
+  // ];
+
+  // const [startNumber, setStartNumber] = useState(0);
+  // const [endNumber, setEndNumber] = useState(0);
+
+  //
+  // const initialState = {
+  //   count: 0,
+  //   flyNum: "",
+  //   startPoint: "",
+  //   endPoint: "",
+  //   startTime: "",
+  //   endTime: "",
+  //   takeTime: "",
+  //   charge: "",
+  //   startDay: "",
+  //   // passenger: [
+  //   //   {
+  //   //     gender: "",
+  //   //     country: "",
+  //   //     name: "",
+  //   //     birth: "",
+  //   //     email: "",
+  //   //     number: "",
+  //   //   },
+  //   // ],
+  // };
+
+  // const [schedule, setSchedule] = useState(initialState);
+
+  const [count, setCount] = useState(0);
+  const [endPoint, setEndPoint] = useState("");
+  const [startDay, setStartDay] = useState("");
+  const [startPoint, setStartPoint] = useState("");
+
+  const onCountChangeHandler = (e) => {
+    // const { name, value } = e.target;
+    // setSchedule({ ...schedule, [name]: value });
+    setCount(e.target.value);
+  };
+  const onEndPointChangeHandler = (e) => {
+    // const { name, value } = e.target;
+    // setSchedule({ ...schedule, [name]: value });
+    setEndPoint(e.target.value);
+  };
+  const onStartDayChangeHandler = (e) => {
+    // const { name, value } = e.target;
+    // setSchedule({ ...schedule, [name]: value });
+    setStartDay(e.target.value);
+  };
+  const onStartPointChangeHandler = (e) => {
+    // const { name, value } = e.target;
+    // setSchedule({ ...schedule, [name]: value });
+    setStartPoint(e.target.value);
+  };
+
+  const onSubmitHandler = (event) => {
+    event.preventDefault();
+    // setSchedule(initialState);
+    setCookie("count", count);
+    setCookie("startPoint", startPoint);
+    setCookie("endPoint", endPoint);
+    setCookie("startDay", startDay);
+  };
 
   return (
-    <StSearchForm>
+    <StSearchForm onSubmit={onSubmitHandler}>
       <Ui1>
         <Form1>
           <p />
           <div>
             <label>출발지</label>
-            <input placeholder="도시/공항" />
-            <a />
+            <Select
+              name="startPoint"
+              // value={schedule.startPoint}
+              onChange={onStartPointChangeHandler}
+              required
+            >
+              <option>도시/ 공항</option>
+              <option value="NAARKJY">여수 PSU</option>
+              <option value="NAARKSS">김포 GMP</option>
+              <option value="NAARKTN">대구 TAE</option>
+              <option value="NAARKTU">청주 CJJ</option>
+            </Select>
+            {/* <input
+              name="startPoint"
+              value={schedule.startPoint}
+              onChange={onChangeHandler}
+            />
+            <a onClick={onStartModalHandler} />
+            {startModal == true ? (
+              <StartPoint
+                setStartModal={setStartModal}
+                setStartNumber={setStartNumber}
+              />
+            ) : null} */}
           </div>
         </Form1>
 
@@ -29,8 +176,23 @@ const SearchForm = () => {
           <p />
           <div>
             <label>도착지</label>
-            <input placeholder="도시/공항" />
-            <a />
+            <Select
+              name="endPoint"
+              // value={schedule.endpoint}
+              onChange={onEndPointChangeHandler}
+              required
+            >
+              <option>도시/ 공항</option>
+              <option value="제주">제주 CJU</option>
+            </Select>
+            {/* <input
+              value={endOptions[endNumber].name}
+              onChange={onChangeHandler}
+            />
+            <a onClick={onEndModalHandler} />
+            {endModal == true ? (
+              <EndPoint setEndModal={setEndModal} setEndNumber={setEndNumber} />
+            ) : null} */}
           </div>
         </Form2>
 
@@ -38,8 +200,21 @@ const SearchForm = () => {
           <p />
           <div>
             <label>탑승일</label>
-            <input placeholder="YYYY-MM-DD" />
-            <a />
+            <Date
+              type="date"
+              name="startDay"
+              // value={schedule.startDay}
+              onChange={onStartDayChangeHandler}
+              required
+            />
+            {/* <input placeholder="YYYY-MM-DD" />
+            <a onClick={onDateModalHandler} />
+            {dateModal == true ? (
+              <BoardingDate
+                setDateModal={setDateModal}
+                onEndModalHandler={onDateModalHandler}
+              />
+            ) : null}*/}
           </div>
         </Form3>
       </Ui1>
@@ -51,40 +226,53 @@ const SearchForm = () => {
             <div>
               <label>성인</label>
               <div>
-                <Plus />
-                <input value="1" />
-                <Minus />
+                <Plus onClick={AdultMinusHandler} />
+                <input
+                  type="number"
+                  name="count"
+                  // value={schedule.count}
+                  onChange={onCountChangeHandler}
+                  required
+                />
+                <Minus onClick={AdultPlusHandler} />
               </div>
             </div>
 
-            <div>
+            {/* <div>
               <label>소아</label>
               <div>
-                <Plus />
-                <input value="1" />
-                <Minus />
+                <Plus
+                onClick={infantMinusHandler}
+                />
+                <input value={infant} />
+                <Minus
+                onClick={infantPlusHandler}
+                />
               </div>
             </div>
             <div>
               <label>유아</label>
               <div>
-                <Plus />
-                <input value="1" />
-                <Minus />
+                <Plus
+                onClick={childMinusHandler}
+                />
+                <input value={child} />
+                <Minus
+                 onClick={childPlusHandler}
+                />
               </div>
-            </div>
+            </div> */}
           </div>
         </Form4>
       </Ui2>
-
-      {/* <button onClick={() => navigate("/detail")}>예매하기</button> */}
+      <button>예매하기</button>
     </StSearchForm>
   );
 };
 
 export default SearchForm;
 
-const StSearchForm = styled.div`
+const StSearchForm = styled.form`
   margin: 0 auto;
   width: 1200px;
   margin-top: 40px;
@@ -186,10 +374,6 @@ const Form1 = styled.div`
 
   & p {
     background-image: url(${img1});
-
-    & clicked {
-      
-    }
   }
 `;
 
@@ -271,6 +455,7 @@ const Form4 = styled.div`
 
   & div > div {
     display: inline-block;
+    margin-left: 13px;
   }
 
   & div > div > div {
@@ -290,6 +475,7 @@ const Plus = styled.a`
   background: url(${minus}) 50% 50% no-repeat;
   border-right: 1px solid rgb(204, 204, 204);
   text-indent: -9999px;
+  cursor: pointer;
 `;
 
 const Minus = styled.a`
@@ -302,5 +488,39 @@ const Minus = styled.a`
   text-indent: -9999px;
   color: rgb(49, 49, 49);
   text-decoration: none;
+  cursor: pointer;
+`;
+
+const Select = styled.select`
+  padding: 0px 30px 0px 15px;
+  margin-top: 10px;
+  height: 46px;
+  font-size: 16px;
+  color: rgb(26, 26, 26);
+  border: 1px solid rgb(204, 204, 204);
+  background-color: rgb(255, 255, 255);
+  box-sizing: border-box;
+  appearance: none;
+  width: 250px;
+  vertical-align: middle;
+  line-height: 1.5;
+  background: url(${select}) right 15px center no-repeat;
+  cursor: pointer;
+`;
+
+const Date = styled.input`
+  padding: 0px 30px 0px 15px;
+  margin-top: 10px;
+  height: 46px;
+  font-size: 16px;
+  color: rgb(26, 26, 26);
+  border: 1px solid rgb(204, 204, 204);
+  background-color: rgb(255, 255, 255);
+  box-sizing: border-box;
+  appearance: none;
+  width: 250px;
+  vertical-align: middle;
+  line-height: 1.5;
+  background: url(${select}) right 15px center no-repeat;
   cursor: pointer;
 `;

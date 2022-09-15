@@ -1,7 +1,10 @@
-import { createStore } from "redux";
-import { combineReducers } from "redux";
+import { configureStore } from "@reduxjs/toolkit";
+import ticketSlice from "../modules/ticket";
 
-const rootReducer = combineReducers({});
-const store = createStore(rootReducer);
+const store = configureStore({
+  reducer: {
+    ticket: ticketSlice.reducer,
+  }
+});
 
 export default store;

@@ -1,12 +1,28 @@
-# Getting Started with Create React App
+# ✈ T'way-air 클론코딩 ✈
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Innovation-Camp Week7 _ 7조  
+Frontend GitHub : https://github.com/lee123so/Clone-T-way-Front_end  
+Backend GitHub : https://github.com/sparta-team7/t-way-clone  
 
-## Available Scripts
+## ✌️ 프로젝트 소개
 
-In the project directory, you can run:
 
-### `yarn start`
+## 📅 제작 기간
+
+
+## 👪 구성원 & 담당 
+
+## 📗 와이어프레임
+
+## 📙 API
+
+## 📘 ERD
+
+## 👷 사용한 기술
+
+## 😡 Trouble Shooting
+
+<!-- ### `yarn start`
 
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
@@ -67,4 +83,4 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 
 ### `yarn build` fails to minify
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify) -->

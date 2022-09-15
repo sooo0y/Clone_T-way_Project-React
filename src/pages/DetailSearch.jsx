@@ -5,7 +5,7 @@ import Footer2 from "../components/booking/Footer2";
 import BookingTitle2 from "../components/booking/02/BookingTitle2";
 import DetailSearchForm from "../components/booking/02/DetailSearchForm";
 import NextStep from "../components/booking/02/NextStep";
-import Notice from "../components/booking/03/Notice";
+import Notice from "../components/booking/02/Notice";
 
 const DetailSearch = () => {
   return (
