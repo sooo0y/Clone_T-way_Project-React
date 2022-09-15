@@ -1,11 +1,10 @@
 import React from 'react'
 
 import { useState ,useEffect} from 'react';
-import { useNavigate } from 'react-router-dom';
 import './style.css'
-import { getCookie } from '../../shared/cookie';
+import { getCookie } from '../../shared/Cookie';
 import { useNavigate } from 'react-router-dom';
-import { logout } from '../../redux/config/module/users';
+import { logout } from '../../redux/modules/users';
 import { useDispatch } from 'react-redux';
 const Header = () => {
 

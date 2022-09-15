@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import { useEffect, useState } from "react";
 import {useSelector, useDispatch} from 'react-redux'
 import {useNavigate} from 'react-router-dom'
-import {__userLogin} from '../../redux/config/module/users'
+import {__userLogin} from '../../redux/modules/users'
 const LoginPage = () => {
     const navigate = useNavigate();
     const dispatch = useDispatch();

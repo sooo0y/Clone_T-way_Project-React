@@ -1,7 +1,7 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
-import { deleteCookie, setCookie , setKakaoCookie} from "../../../shared/cookie";
-import KakaoLogin from "../../../components/login/KakaoLogin";
+import { deleteCookie, setCookie , setKakaoCookie} from "../../shared/Cookie";
+import KakaoLogin from "../../components/login/KakaoLogin";
 
 export const __getReservationCheck = createAsyncThunk(
     "ReservationCheck",
