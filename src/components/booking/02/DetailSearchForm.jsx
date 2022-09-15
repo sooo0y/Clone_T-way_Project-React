@@ -9,20 +9,11 @@ import { getCookie } from "../../../shared/Cookie";
 
 const DetailSearchForm = () => {
   const dispatch = useDispatch();
-
-  const startDay = getCookie("startDay");
-  const startPoint = getCookie("startPoint");
-
-  const data = {
-     startDay:{startDay},
-     startPoint:{startPoint}
-  }
-
   const { isLoading, error, tickets } = useSelector((state) => state.ticket);
   console.log(tickets)
 
   useEffect(() => {
-    dispatch(__getTicket(data));
+    dispatch(__getTicket());
   }, []);
 
   if (isLoading) {
@@ -40,6 +31,8 @@ const DetailSearchForm = () => {
           <Point>
             <Box>
               <Start>
+                {/* <strong>{tickets[0].startEng}</strong>
+                <span>{tickets[0].startPoint}</span> */}
                 <strong>GMP</strong>
                 <span>김포</span>
               </Start>

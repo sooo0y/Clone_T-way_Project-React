@@ -8,15 +8,17 @@ Backend GitHub : https://github.com/sparta-team7/t-way-clone
 
 
 ## 📅 제작 기간
-
+2022. 09. 09 ~ 2022. 09. 15
 
 ## 👪 구성원 & 담당 
 
 ## 📗 와이어프레임
-
-## 📙 API
+![image](https://user-images.githubusercontent.com/110370672/190314437-c1807b23-be87-4ce2-8296-24462a87803b.png)
 
 ## 📘 ERD
+![image](https://user-images.githubusercontent.com/110370672/190314470-b3ac1092-c2e4-427c-a3cc-46ef8215b00a.png)
+
+## 📙 API
 
 ## 👷 사용한 기술
 

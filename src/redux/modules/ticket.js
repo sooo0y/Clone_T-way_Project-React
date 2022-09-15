@@ -14,17 +14,18 @@ export const __getTicket = createAsyncThunk(
   async (payload, thunkAPI) => {
     const startDay = getCookie("startDay");
     const startPoint = getCookie("startPoint");
-  
-    const start = {
-       startDay:{startDay},
-       startPoint:{startPoint}
-    }
 
-    console.log(start.startPoint.startPoint)
-    console.log(start.startDay.startDay)
+    const start = {
+      startDay: { startDay },
+      startPoint: { startPoint },
+    };
+
+    console.log(start.startPoint.startPoint);
+    console.log(start.startDay.startDay);
 
     try {
-      const data = await axios.get(`
+      const data = await axios.get(
+        `
       http://3.39.254.156/api/ticket?depAirportId=${start.startPoint.startPoint}&depPlandTime=${start.startDay.startDay}
       `,{
         headers:{
@@ -46,7 +47,7 @@ export const ticketSlice = createSlice({
   name: "ticket",
   initialState,
   reducers: {
-    addTicket: async(state, action) => {
+    addTicket: async (state, action) => {
       const data = await axios.get(`
       http://3.39.254.156/api/ticket?depAirportId=${action.payload.startPoint.startPoint}&depPlandTime=${action.payload.startDay.startDay}
       `);
@@ -63,7 +64,6 @@ export const ticketSlice = createSlice({
       .addCase(__getTicket.fulfilled, (state, action) => {
         state.isLoading = false;
         state.tickets = action.payload;
-        console.log(state.ticket)
       })
       .addCase(__getTicket.rejected, (state, action) => {
         state.isLoading = false;
