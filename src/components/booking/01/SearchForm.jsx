@@ -14,20 +14,21 @@ import minus from "../../../assert/booking/01/+.png";
 // import BoardingDate from "./modal/BoardingDate";
 import select from "../../../assert/booking/03/select.png";
 import { setCookie } from "../../../shared/Cookie";
+import { useNavigate } from "react-router-dom";
 
 const SearchForm = () => {
-  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   // Counter
-  const [adult, setAdult] = useState(0);
+  // const [adult, setAdult] = useState(0);
   // const [infant, setInfant] = useState(0);
   // const [child, setChild] = useState(0);
 
-  const AdultPlusHandler = () => {
-    setAdult(adult + 1);
+  const countPlusHandler = () => {
+    setCount(count + 1);
   };
-  const AdultMinusHandler = () => {
-    setAdult(adult - 1);
+  const countMinusHandler = () => {
+    setCount(count - 1);
   };
 
   // const infantPlusHandler = () => {
@@ -78,7 +79,6 @@ const SearchForm = () => {
   // const [startNumber, setStartNumber] = useState(0);
   // const [endNumber, setEndNumber] = useState(0);
 
-  //
   // const initialState = {
   //   count: 0,
   //   flyNum: "",
@@ -109,23 +109,17 @@ const SearchForm = () => {
   const [startPoint, setStartPoint] = useState("");
 
   const onCountChangeHandler = (e) => {
-    // const { name, value } = e.target;
-    // setSchedule({ ...schedule, [name]: value });
     setCount(e.target.value);
   };
   const onEndPointChangeHandler = (e) => {
-    // const { name, value } = e.target;
-    // setSchedule({ ...schedule, [name]: value });
     setEndPoint(e.target.value);
   };
   const onStartDayChangeHandler = (e) => {
-    // const { name, value } = e.target;
-    // setSchedule({ ...schedule, [name]: value });
-    setStartDay(e.target.value);
+    // 2022-09-22로 들어오는 데이터를 20220922로 변경
+    const day = e.target.value.replace(/-/g, "");
+    setStartDay(day);
   };
   const onStartPointChangeHandler = (e) => {
-    // const { name, value } = e.target;
-    // setSchedule({ ...schedule, [name]: value });
     setStartPoint(e.target.value);
   };
 
@@ -136,6 +130,7 @@ const SearchForm = () => {
     setCookie("startPoint", startPoint);
     setCookie("endPoint", endPoint);
     setCookie("startDay", startDay);
+    navigate('/detail');
   };
 
   return (
@@ -151,7 +146,7 @@ const SearchForm = () => {
               onChange={onStartPointChangeHandler}
               required
             >
-              <option>도시/ 공항</option>
+              <option value="">도시/ 공항</option>
               <option value="NAARKJY">여수 PSU</option>
               <option value="NAARKSS">김포 GMP</option>
               <option value="NAARKTN">대구 TAE</option>
@@ -182,7 +177,7 @@ const SearchForm = () => {
               onChange={onEndPointChangeHandler}
               required
             >
-              <option>도시/ 공항</option>
+              <option value="">도시/ 공항</option>
               <option value="제주">제주 CJU</option>
             </Select>
             {/* <input
@@ -205,7 +200,10 @@ const SearchForm = () => {
               name="startDay"
               // value={schedule.startDay}
               onChange={onStartDayChangeHandler}
+              placeholder="YYYY-MM-DD"
               required
+              min="2022-09-15"
+              max="2022-10-15"
             />
             {/* <input placeholder="YYYY-MM-DD" />
             <a onClick={onDateModalHandler} />
@@ -226,15 +224,16 @@ const SearchForm = () => {
             <div>
               <label>성인</label>
               <div>
-                <Plus onClick={AdultMinusHandler} />
+                <Plus onClick={countMinusHandler} />
                 <input
                   type="number"
                   name="count"
-                  // value={schedule.count}
+                  value={count}
                   onChange={onCountChangeHandler}
                   required
+                  min="1"
                 />
-                <Minus onClick={AdultPlusHandler} />
+                <Minus onClick={countPlusHandler} />
               </div>
             </div>
 
@@ -411,12 +410,11 @@ const Form3 = styled.div`
     background: url(${img4}) 50% 50% no-repeat;
     display: inline-block;
     position: absolute;
-    width: 20px;
-    height: 20px;
+    width: 19px;
+    height: 55px;
     text-indent: -9999px;
     z-index: 1;
-    transform: translateY(0px);
-    transform: translateX(-20px);
+    transform: translateX(-23px);
     color: rgb(49, 49, 49);
     text-decoration: none;
     cursor: pointer;
@@ -513,14 +511,14 @@ const Date = styled.input`
   margin-top: 10px;
   height: 46px;
   font-size: 16px;
-  color: rgb(26, 26, 26);
+  color: rgb(130, 130, 130);
   border: 1px solid rgb(204, 204, 204);
-  background-color: rgb(255, 255, 255);
+  /* background-color: rgb(255, 255, 255); */
   box-sizing: border-box;
   appearance: none;
   width: 250px;
   vertical-align: middle;
   line-height: 1.5;
-  background: url(${select}) right 15px center no-repeat;
+  background: url(${img4}) right 15px center no-repeat;
   cursor: pointer;
 `;

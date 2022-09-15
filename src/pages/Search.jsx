@@ -17,7 +17,6 @@ const Ticket = () => {
         <SearchForm />
       </StTicket>
       <Footer2 />
-      <NextStep/>
     </>
   );
 };

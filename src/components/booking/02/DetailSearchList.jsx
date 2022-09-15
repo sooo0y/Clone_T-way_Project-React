@@ -4,7 +4,8 @@ import styled from "styled-components";
 import img from "../../../assert/booking/02/img.png";
 import fly from "../../../assert/booking/02/fly.png";
 
-const DetailSearchList = ({ ticket }) => {
+
+const DetailSearchList = ({ ticket, tickets }) => {
   const navigate = useNavigate();
 
   // 202209111930 으로 받아오는 데이터를 19:30으로 변환
@@ -15,6 +16,8 @@ const DetailSearchList = ({ ticket }) => {
   // const charge = `${String(ticket.charge).slice(0,2)},${String(ticket.charge).slice(2)}`
   const charge = ticket.charge.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
 
+  console.log(ticket)
+
   return (
     <Ul>
       <li onClick={() => navigate("/passenger")}>
@@ -22,12 +25,12 @@ const DetailSearchList = ({ ticket }) => {
           <ServiceSectionBox>
             <PlanType>
               <Btn1>{ticket.flyNum}</Btn1>
-              <Btn2>B737-800</Btn2>
+              {/* <Btn2>B737-800</Btn2> */}
             </PlanType>
 
             <FirstService>
               <strong>{startTime}</strong>
-              <span>SMP</span>
+              <span>{ticket.startEng}</span>
             </FirstService>
 
             <ServiceExp>
@@ -39,7 +42,7 @@ const DetailSearchList = ({ ticket }) => {
 
             <LastService>
               <strong>{endTime}</strong>
-              <span>PUS</span>
+              <span>CJU</span>
             </LastService>
 
             <PriceInfo>
@@ -78,7 +81,7 @@ const ServiceSectionBox = styled.div`
 
 const PlanType = styled.div`
   display: inline-block;
-  padding-top: 9px;
+  padding-top: 20px;
 `;
 
 const Btn1 = styled.div`
@@ -86,7 +89,6 @@ const Btn1 = styled.div`
   font-size: 16px;
   background: url(${img}) no-repeat 0 0;
   display: block;
-  text-decoration: underline;
   padding-left: 25px;
   line-height: 20px;
   cursor: pointer;

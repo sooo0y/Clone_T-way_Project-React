@@ -3,8 +3,7 @@ import React from 'react'
 import { useState ,useEffect} from 'react';
 import { useNavigate } from 'react-router-dom';
 import './style.css'
-import { getCookie } from '../../shared/cookie';
-import { useNavigate } from 'react-router-dom';
+import { getCookie } from '../../shared/Cookie';
 import { logout } from '../../redux/config/module/users';
 import { useDispatch } from 'react-redux';
 const Header = () => {
