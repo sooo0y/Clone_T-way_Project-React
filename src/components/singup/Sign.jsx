@@ -1,7 +1,97 @@
 import React from 'react'
 import styled from 'styled-components'
-
+import {useNavigate} from 'react-router-dom'
+import { useState } from "react";
+import {useSelector, useDispatch} from 'react-redux'
+import axios from "axios";
 const Sign = () => {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const [userId, setuserId] = useState('')
+  const [password, setPassword] = useState('')
+  const [passwordConfirm, setPasswordConfirm] = useState('')
+  const [idMessage, setIdMessage] = useState('')
+  const [passwordMessage, setPasswordMessage] = useState('')
+  const [passwordConfirmMessage, setPasswordConfirmMessage] = useState('')
+
+
+  const [isId, setIsId] = useState(false)
+  const [isPassword, setIsPassword] = useState(false)
+  const [isPasswordConfirm, setIsPasswordConfirm] = useState(false)
+
+  const onChangeName = (e) => {
+    const usernameRegex = /^(?=.*[a-zA-z0-9])(?=.*[a-zA-z]).{4,12}$/
+    const usernameCurrnet = e.target.value 
+    setuserId(usernameCurrnet)
+    
+    if(!usernameRegex.test(usernameCurrnet)){
+        setIdMessage('영문자랑 숫자만으로 구성해주세요')
+        setIsId(false)
+    }else{
+        setIdMessage('올바른 형식입니다')
+        setIsId(true)
+    }
+};
+const onChangePassword = (e) => {
+  const passwordRegex = /^(?=.*[a-zA-z])(?=.*[0-9]).{8,32}$/
+  const passwordCurrnet = e.target.value;
+  setPassword(passwordCurrnet)
+
+  if(!passwordRegex.test(passwordCurrnet)){
+      setPasswordMessage('숫자+영문자+특수문자 조합으로 8자리 이상 입력해주세요!')
+      setIsPassword(false);
+  }else{
+      setPasswordMessage('안전한 비밀번호에요!')
+      setIsPassword(true);
+  }
+}
+
+const onChangePasswordConform = (e) => {
+  const passwordConformRegex = /^(?=.+[a-zA-z])(?=.+[0-9]).{8,32}$/
+  const passwordConformCurrnet = e.target.value;
+  setPasswordConfirm(passwordConformCurrnet)
+
+  if(!password===passwordConfirm){
+      setPasswordConfirmMessage('비밀번호가 틀립니다')
+      setIsPasswordConfirm(false);
+  }else{
+      setPasswordConfirmMessage('비밀번호가 같습니다')
+      setIsPasswordConfirm(true);
+  }
+}
+const userInfo = {
+  userId,
+  password,
+  passwordConfirm
+}
+
+const onSubmitHandler = async (e) => {
+  e.preventDefault();
+if( userId.trim()===""|| password.trim() === ""|| passwordConfirm.trim() === ""){
+  return alert ('모든 항목을 입력해주세요')
+};   
+if(password !== passwordConfirm){
+  return alert('비밀번호 확인이 일치하지 않습니다.')};
+if(isId !== true || isPassword !== true || isPasswordConfirm !== true ){
+  return alert('형식을 확인해주세요')
+}
+const data = await axios.post(
+  "http://3.39.254.156/api/member/signup",
+  userInfo,{
+      headers:{
+          "Content-Type": "application/json",
+      }
+  }
+);
+console.log(data)
+if(data.data.success){
+  navigate('/login');
+}else{
+  window.alert(data.error.message)
+}
+
+
+}  
   return (
     <div>
       <StTit><h1>회원가입하기</h1><p>회원님의 개인정보를 입력해주시기 바랍니다.</p></StTit>
@@ -13,7 +103,7 @@ const Sign = () => {
           <StSignUpTit>아이디</StSignUpTit>
           <StSignTd><StInputWrap  >
             <span>
-              <StInput maxlength="20" type="text" placeholder="6~20자리, 영대 소문자, 숫자 조합." />
+              <StInput maxlength="20" type="text" name='username' placeholder="6~20자리, 영대 소문자, 숫자 조합."  value={userId} onChange={onChangeName}/>
               <StButton >중복 확인</StButton>
             </span>
           </StInputWrap></StSignTd>
@@ -23,7 +113,7 @@ const Sign = () => {
           <StSignTd>
             <StInputWrap >
               <span>
-                <StInput   maxlength="20"  title="비밀번호 입력 란" type="password" placeholder="8자~20자리, 영대소문자,숫자,특수기호 중 2가지 이상 조합." />
+                <StInput   maxlength="20"  title="비밀번호 입력 란" type="password" placeholder="8자~20자리, 영대소문자,숫자,특수기호 중 2가지 이상 조합." value={password} onChange={onChangePassword} />
               </span>
             </StInputWrap>
           </StSignTd>
@@ -33,14 +123,14 @@ const Sign = () => {
           <StSignTd>
             <StInputWrap >
               <span>
-                <StInput   maxlength="20"  title="비밀번호 확인 입력 란" type="password" placeholder="8자~20자리, 영대소문자,숫자,특수기호 중 2가지 이상 조합." />
+                <StInput value={passwordConfirm} onChange={onChangePasswordConform}  maxlength="20"  title="비밀번호 확인 입력 란" type="password" placeholder="8자~20자리, 영대소문자,숫자,특수기호 중 2가지 이상 조합." />
               </span>
             </StInputWrap>
           </StSignTd>
         </tr>
       </StTbody>
       <StSignButtonWrap>
-        <StSignButton >회원가입 완료하기</StSignButton>
+        <StSignButton onClick={onSubmitHandler}  >회원가입 완료하기</StSignButton>
       </StSignButtonWrap>
       </StForm>
     </div>
