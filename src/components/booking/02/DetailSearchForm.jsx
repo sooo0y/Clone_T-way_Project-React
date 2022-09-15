@@ -1,16 +1,16 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import check from "../../../assert/booking/02/check_.png";
 import fly from "../../../assert/booking/02/fly.png";
 import { useSelector, useDispatch } from "react-redux";
-import { addTicket, __getTicket } from "../../../redux/modules/ticket";
+import { __getTicket } from "../../../redux/modules/ticket";
 import DetailSearchList from "./DetailSearchList";
-import { getCookie } from "../../../shared/Cookie";
 
 const DetailSearchForm = () => {
   const dispatch = useDispatch();
   const { isLoading, error, tickets } = useSelector((state) => state.ticket);
-  console.log(tickets)
+
+
 
   useEffect(() => {
     dispatch(__getTicket());
@@ -31,10 +31,8 @@ const DetailSearchForm = () => {
           <Point>
             <Box>
               <Start>
-                {/* <strong>{tickets[0].startEng}</strong>
-                <span>{tickets[0].startPoint}</span> */}
                 <strong>GMP</strong>
-                <span>김포</span>
+                <span>서울/김포</span>
               </Start>
               <Img />
               <End>
@@ -86,9 +84,10 @@ const PointContainer = styled.div`
   position: relative;
   margin-top: 60px;
   width: 90%;
-  border: 1px solid #ccc;
+  border: 2px solid #ccc;
   border-radius: 5px;
   box-sizing: border-box;
+
 `;
 
 const PointBox = styled.div`
