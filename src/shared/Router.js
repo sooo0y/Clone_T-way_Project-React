@@ -6,12 +6,14 @@ import SignUp from "../pages/SignUp";
 import Search from "../pages/Search";
 import DetailSearch from "../pages/DetailSearch";
 import Passenger from "../pages/Passenger";
+import MyBooking from "../pages/MyBooking";
 const Router = () => {
   return (
     <BrowserRouter>
       <Routes>
           <Route path ="/" element = {<Main/>}/>
           <Route path ="/search" element = {<Search/>}/>
+          <Route path ="/mypage" element = {<MyBooking/>}/>
           <Route path ="/detail" element = {<DetailSearch/>}/>
           <Route path ="/passenger" element = {<Passenger/>}/>
           <Route path ="/login" element = {<Login/>}/>
