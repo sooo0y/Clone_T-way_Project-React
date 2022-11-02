@@ -31,8 +31,6 @@ https://youtu.be/6oblvLjBtP8
 ## 📙 API
 ![image](https://user-images.githubusercontent.com/110370672/190383061-d919245e-7f5c-477e-a2a2-d5b350400f18.png)
 
-## 🖼 구현 이미지
-
 ## 👷 사용한 기술
 `Back-end`
 -   Java 11
@@ -45,9 +43,8 @@ https://youtu.be/6oblvLjBtP8
 
 -   JavaScript
 -   React
--   React-Toolkit
+-   Redux-Toolkit
 -   axios
--   React-redux
 
 ## 🏳‍🌈 기존 사이트와 다른 점
 - 회원가입
